@@ -3,26 +3,30 @@ import styled from 'styled-components';
 
 const LoadingText = styled.div`
   margin : 0 auto;
+  margin-top : 20px;
   text-align : center;
-  font-size : 25px;
+  font-size : 20px;
   font-weight : bold;
+
+  color : white !important;
 `
 
 function Loadmore(props) {
-    const {display , setDisplay , data } = props;
+    const { loadData } = props;
     const [observedEl, setObservedEl] = useState(null);
 
     const loadMore = () => { //3.Set LoadingMore || ทำการ slice data เพิ่มเข้าไปใน display
         setTimeout(() => { // หน่วงเวลา
-            setDisplay([...display, ...data.slice(display.length, data.length > display.length + 10 ? display.length + 10 : data.length)]) //เช็ค ถ้า Data มากกว่าข้อมูลที่แสดง ให้เพิ่ม Data + 10 ใน display แต่ถ้าไม่ใช่ ให้เอา data ทั้งหมดมา
+            loadData();
         }, 500)
     }
 
     const observer = new IntersectionObserver((items) => { //2.Check Observer Targer || ถ้าหน้าจอ focus element ที่ต้องการแล้วให้ Load data
         if (items[0].isIntersecting) {
-            loadMore();
+            loadMore()
         }
     }, { threshold: 1 })
+
 
     useEffect(() => {
         if (observedEl) observer.observe(observedEl); //1.ถ้ามี element ให้ทำการติดตาม หรือ observe element นั้น ๆ
@@ -32,13 +36,12 @@ function Loadmore(props) {
         }
     }, [observedEl, observer])
 
+
     return (
         <div>
-            {data.length > display.length &&
-                <LoadingText>
-                    <p ref={setObservedEl}>Loading more...</p> 
-                </LoadingText>
-            }
+            <LoadingText>
+                <p ref={setObservedEl}>Loading more...</p>
+            </LoadingText>
         </div>
     )
 }
