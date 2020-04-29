@@ -1,3 +1,7 @@
+## Example Infinite Scroll Gallery 
+Powerd by React With IntersectionObserver Api
+## Link Demo : https://scroll-gallery.netlify.app/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
