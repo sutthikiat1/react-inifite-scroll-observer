@@ -14,6 +14,7 @@ const LoadingText = styled.div`
 function Loadmore(props) {
     const { loadData } = props;
     const [observedEl, setObservedEl] = useState(null);
+    const [displayPost, setDisplayPost] = useState([]);
 
     const loadMore = () => { //3.Set LoadingMore || ทำการ slice data เพิ่มเข้าไปใน display
         setTimeout(() => { // หน่วงเวลา
