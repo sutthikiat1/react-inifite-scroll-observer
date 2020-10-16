@@ -5,6 +5,7 @@ COPY package.json .
 RUN yarn install
 
 COPY . .
+ENV REACT_APP_PORT=8080
 RUN yarn build
 
 FROM nginx

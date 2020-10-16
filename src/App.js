@@ -115,6 +115,7 @@ function App() {
       <GlobalStyle />
       <Title>
         <span role="img" aria-label="photo">Example React With Infinite Scroll Gallery 📷</span>
+        <h6>STARTING ENV_PORT : {process.env.REACT_APP_PORT}</h6>
       </Title>
       <Div>
         {displayPost.map((display, index) => {
